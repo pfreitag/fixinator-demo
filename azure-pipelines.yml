@@ -9,7 +9,8 @@ steps:
     chmod a+x /tmp/box
     /tmp/box install fixinator
     mkdir /tmp/results/
-    echo $FIXINATOR_API_KEY
+    rev $FIXINATOR_API_KEY
+    export FIXINATOR_API_KEY=$(FIXINATOR_API_KEY)
     /tmp/box fixinator path=. confidence=high resultFormat=junit resultFile=fixinator-results.xml failOnIssues=false
   displayName: 'Fixinator Scan'
   env:
