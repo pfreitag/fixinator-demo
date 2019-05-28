@@ -1,8 +1,16 @@
-<cfparam name="gender" default="unspecified">
-<cfset greet_male = "Mr.">
-<cfset greet_female = "Ms.">
-<cfset greet_unspecified = "Friend">
-
+<cfparam name="greetingType" default="formal">
+<cfswitch expression="#session.gender#">
+    <cfcase value="male">
+        <cfset session.formal = "Greetings Mr. #session.lastName#">
+    </cfcase>
+    <cfcase value="female">
+        <cfset session.formal = "Greetings Ms. #session.lastName#">
+    </cfcase>
+    <cfdefaultcase>
+        <cfset session.formal = "Greetings #session.firstName# #session.lastName#">
+    </cfdefaultcase>
+</cfswitch>
+<cfset session.casual = "Hey #session.firstName#!">
 <cfoutput>
-    <h1>Hello #evaluate("greet_#url.gender#")#</h1>
+    <h1>#evaluate("session.#greetingType#")#,</h1>
 </cfoutput>
