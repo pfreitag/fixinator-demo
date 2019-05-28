@@ -12,6 +12,8 @@ steps:
     echo $FIXINATOR_API_KEY
     /tmp/box fixinator path=. confidence=high resultFormat=junit resultFile=fixinator-results.xml failOnIssues=false
   displayName: 'Fixinator Scan'
+  env:
+      FIXINATOR_API_KEY: $(FIXINATOR_API_KEY)
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'JUnit'
