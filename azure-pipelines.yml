@@ -1,0 +1,20 @@
+pool:
+  vmImage: 'ubuntu-16.04'
+
+steps:
+- script: |
+    echo Starting the build
+    curl --location -o /tmp/box.zip https://www.ortussolutions.com/parent/download/commandbox/type/bin
+    unzip /tmp/box.zip -d /tmp/
+    chmod a+x /tmp/box
+    /tmp/box install fixinator
+    mkdir /tmp/results/
+    /tmp/box fixinator path=. confidence=high resultFormat=junit resultFile=fixinator-results.xml failOnIssues=false
+  displayName: 'Fixinator Scan'
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '**/fixinator-*.xml' 
+    testRunTitle: Fixinator Security Scan
+    failTaskOnFailedTests: true
+  displayName: 'Fixinator Scan Results'
