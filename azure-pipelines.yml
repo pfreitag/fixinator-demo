@@ -9,12 +9,13 @@ steps:
     chmod a+x /tmp/box
     /tmp/box install fixinator
     mkdir /tmp/results/
+    echo $FIXINATOR_API_KEY
     /tmp/box fixinator path=. confidence=high resultFormat=junit resultFile=fixinator-results.xml failOnIssues=false
   displayName: 'Fixinator Scan'
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'JUnit'
-    testResultsFiles: '**/fixinator-*.xml' 
+    testResultsFiles: '**/fixinator-*.xml'
     testRunTitle: Fixinator Security Scan
     failTaskOnFailedTests: true
   displayName: 'Fixinator Scan Results'
