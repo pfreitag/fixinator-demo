@@ -1,6 +1,6 @@
 {
 	"ignorePaths":["some/folder-to-ignore", "some/file-to-ignore.cfm"],
-	"ignoreExtensions":["ign","ore"],
+	"ignoreExtensions":["md","yml"],
 	"ignoreScanners":["xss"],
 	"minSeverity": "low",
 	"minConfidence": "high"
