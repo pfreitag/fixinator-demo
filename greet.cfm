@@ -12,5 +12,5 @@
 </cfswitch>
 <cfset session.casual = "Hey #session.firstName#!">
 <cfoutput>
-    <h1>#evaluate("session.#greetingType#")#,</h1>
+    <h1>#session[greetingType]#,</h1>
 </cfoutput>
