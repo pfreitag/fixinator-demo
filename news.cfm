@@ -4,7 +4,7 @@
 </cfquery>
 <cfquery name="two">
     SELECT * FROM news
-    WHERE id = #url.id#
+    WHERE id = #url.two#
 </cfquery>
 
 <cfoutput encodeFor="html">
