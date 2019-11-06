@@ -1,6 +1,10 @@
 <cfquery name="news">
     SELECT * FROM news
-    WHERE id = <cfqueryparam value="#url.id#" cfsqltype="integer">
+    WHERE id = #url.id#
+</cfquery>
+<cfquery name="two">
+    SELECT * FROM news
+    WHERE id = #url.id#
 </cfquery>
 
 <cfoutput encodeFor="html">
